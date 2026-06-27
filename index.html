@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>撮合业务管理中心 - 商品中心 Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="channel-rail" aria-label="渠道导航">
+        <div class="rail-logo" aria-hidden="true">
+          <span></span>
+        </div>
+        <button class="rail-item active" type="button" title="抖音">
+          <span class="rail-icon">d</span>
+          <span>抖音</span>
+        </button>
+        <button class="rail-item" type="button" title="快手">
+          <span class="rail-icon">k</span>
+          <span>快手</span>
+        </button>
+        <button class="rail-item" type="button" title="微信">
+          <span class="rail-icon">w</span>
+          <span>微信</span>
+        </button>
+      </aside>
+
+      <aside class="side-nav" aria-label="业务导航">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <strong>撮合业务管理中心</strong>
+        </div>
+        <nav>
+          <section class="nav-group expanded">
+            <button class="group-title" type="button">
+              <span>计划管理</span>
+              <span class="chevron">⌃</span>
+            </button>
+            <a class="nav-link active" href="#">计划列表</a>
+            <a class="nav-link" href="#">延期管理</a>
+            <a class="nav-link" href="#">特殊申请</a>
+            <a class="nav-link" href="#">计划显示规则</a>
+          </section>
+          <section class="nav-group expanded">
+            <button class="group-title" type="button">
+              <span>商品管理</span>
+              <span class="chevron">⌃</span>
+            </button>
+            <a class="nav-link" href="#">全网商品</a>
+            <a class="nav-link selected" href="#">合作商品</a>
+            <a class="nav-link" href="#">商品标签</a>
+            <a class="nav-link" href="#">活动管理</a>
+          </section>
+        </nav>
+        <div class="pet-placeholder" aria-hidden="true"></div>
+      </aside>
+
+      <main class="workspace">
+        <header class="top-bar">
+          <button class="breadcrumb" type="button">电商 · 中台 · 商品中心⌄</button>
+          <div class="top-actions">
+            <button class="icon-button" type="button" title="应用面板">▦</button>
+            <div class="avatar" aria-label="用户头像"></div>
+          </div>
+        </header>
+
+        <section class="content-card">
+          <div class="tabs" role="tablist" aria-label="合作商品状态">
+            <button class="tab" type="button" data-tab="pending">待审核</button>
+            <button class="tab active" type="button" data-tab="promoting">推广中（42）</button>
+            <button class="tab" type="button" data-tab="rejected">申请未通过（149）</button>
+            <button class="tab" type="button" data-tab="ended">合作已经终止</button>
+            <button class="tab" type="button" data-tab="expired">合作已到期</button>
+          </div>
+
+          <form class="filters" id="filters">
+            <label class="field id-field">
+              <select id="searchType" aria-label="搜索类型">
+                <option value="productId">商品ID</option>
+                <option value="productName">商品名称</option>
+                <option value="activity">所属活动</option>
+              </select>
+              <input id="keyword" value="3822441679328247882" aria-label="搜索关键词" />
+            </label>
+            <label class="field date-range">
+              <span>提报时间：</span>
+              <input id="submitStart" placeholder="开始日期" />
+              <span>－</span>
+              <input id="submitEnd" placeholder="结束日期" />
+              <button class="calendar-button" type="button" title="选择提报时间">□</button>
+            </label>
+            <label class="field date-range">
+              <span>发布时间：</span>
+              <input id="publishStart" placeholder="开始日期" />
+              <span>－</span>
+              <input id="publishEnd" placeholder="结束日期" />
+              <button class="calendar-button" type="button" title="选择发布时间">□</button>
+            </label>
+            <label class="field type-field">
+              <span>合作类型：</span>
+              <select id="cooperationType" aria-label="合作类型">
+                <option value="">请选择</option>
+                <option value="normal">普通合作</option>
+                <option value="pool">商品池合作</option>
+                <option value="exclusive">专属活动</option>
+              </select>
+            </label>
+            <button class="primary-button" type="submit">查询</button>
+          </form>
+
+          <div class="table-card">
+            <div class="table-toolbar">
+              <div class="toolbar-title">
+                <strong>数据列表</strong>
+                <span class="divider"></span>
+                <button class="ghost-button" type="button">⊙ 自定义列</button>
+              </div>
+              <div class="toolbar-actions">
+                <button class="secondary-button" type="button">二级团业务配置</button>
+                <button class="secondary-button" type="button">招商业务配置</button>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="select-col"><input type="checkbox" aria-label="全选" /></th>
+                    <th class="product-col">商品信息</th>
+                    <th>总销量</th>
+                    <th>团长30天销量 <span class="sort-mark">↕</span></th>
+                    <th>分成比例</th>
+                    <th>平台服务费率</th>
+                    <th>团长佣金比</th>
+                    <th>所属活动</th>
+                    <th>严选显示状态</th>
+                    <th class="action-col">操作</th>
+                  </tr>
+                </thead>
+                <tbody id="productRows"></tbody>
+              </table>
+            </div>
+
+            <footer class="pagination">
+              <span id="totalText">共 42 条</span>
+              <button class="page-button" type="button" disabled>‹</button>
+              <button class="page-button active" type="button">1</button>
+              <button class="page-button" type="button" disabled>›</button>
+              <select aria-label="每页条数">
+                <option>100 条/页</option>
+                <option>50 条/页</option>
+                <option>20 条/页</option>
+              </select>
+              <span>前往</span>
+              <input class="page-input" aria-label="跳转页码" />
+            </footer>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="display-popover" id="displayPopover" role="tooltip" aria-hidden="true"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
