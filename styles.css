@@ -687,11 +687,6 @@ th {
   overflow: hidden;
 }
 
-.winner-card.final {
-  border-color: #b8ccff;
-  box-shadow: inset 3px 0 0 var(--blue);
-}
-
 .winner-card-head {
   display: flex;
   align-items: center;
@@ -721,7 +716,7 @@ th {
   background: #edf3ff;
 }
 
-.winner-card.final .winner-card-head em {
+.winner-card-head .final-tag {
   color: #18864b;
   background: #e8f7ee;
 }
@@ -757,6 +752,7 @@ th {
 
 .winner-meta {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 8px 14px;
   padding: 0 12px 12px;
@@ -764,30 +760,8 @@ th {
   font-size: 13px;
 }
 
-.current-plan {
-  display: grid;
-  grid-template-columns: auto minmax(140px, 1fr) auto auto auto;
-  align-items: center;
-  gap: 14px;
-  min-height: 48px;
-  padding: 0 18px 14px;
-  color: #333b4b;
-  background: #fff;
-}
-
-.current-plan strong {
-  color: #202838;
-}
-
-.current-plan span {
-  min-width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.popover-link {
-  justify-self: end;
+.winner-card-link {
+  margin-left: auto;
 }
 
 @media (max-width: 1440px) {

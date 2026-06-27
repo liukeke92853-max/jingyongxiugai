@@ -136,23 +136,15 @@ function renderDisplayPopover(product) {
       ${renderPlanCard("单佣池最优", singleBestPlan, finalDisplayPlan.id === singleBestPlan.id, "single")}
       ${renderPlanCard("双佣池最优", dualBestPlan, finalDisplayPlan.id === dualBestPlan.id, "dual")}
     </div>
-
-    <div class="current-plan">
-      <strong>当前计划</strong>
-      <span>${escapeHtml(product.activity)}</span>
-      <span>佣金：${formatRate(product.commission, product.promotionCommission)}</span>
-      <span>服务费：${formatRate(product.serviceRate, product.promotionServiceRate)}</span>
-      <button class="link-button popover-link" type="button" data-action="link" data-id="${product.id}">链接</button>
-    </div>
   `;
 }
 
 function renderPlanCard(title, plan, isFinal, cardType) {
   return `
-    <section class="winner-card ${isFinal ? "final" : ""} ${cardType}">
+    <section class="winner-card ${cardType}">
       <div class="winner-card-head">
         <strong>${escapeHtml(title)}</strong>
-        <em>${isFinal ? "最终展示" : "池内最优"}</em>
+        <em class="${isFinal ? "final-tag" : ""}">${isFinal ? "最终展示" : "池内最优"}</em>
       </div>
       <div class="winner-card-body">
         <div class="thumb popover-thumb" aria-hidden="true"></div>
@@ -167,6 +159,7 @@ function renderPlanCard(title, plan, isFinal, cardType) {
         <span>服务费：${formatRate(plan.serviceRate, plan.promotionServiceRate)}</span>
         <span>到期：${escapeHtml(plan.endDate)}</span>
         <span>发布：${escapeHtml(plan.publishDate)}</span>
+        <button class="link-button winner-card-link" type="button" data-action="link" data-id="${plan.id}">链接</button>
       </div>
     </section>
   `;
