@@ -716,7 +716,7 @@ th {
   background: #edf3ff;
 }
 
-.winner-card-head .final-tag {
+.winner-card .winner-card-head em.final-tag {
   color: #18864b;
   background: #e8f7ee;
 }
